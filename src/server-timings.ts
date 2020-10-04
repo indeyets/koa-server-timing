@@ -18,6 +18,13 @@ function hrTimeToMs(hrtime: [number, number]): number {
   return secAsMs + nsAsMs;
 }
 
+function encodeDescription(input: string): string {
+  input = input
+    .replace(new RegExp("\\\\", "g"), "\\\\")
+    .replace(new RegExp('"', "g"), '\\"');
+  return `"${input}"`;
+}
+
 interface Span {
   start: [number, number];
   desc: string;
@@ -56,7 +63,9 @@ export class ServerTimings {
 
     const { desc } = span;
     const description =
-      desc.length && spanName !== desc ? `;desc="${desc}"` : "";
+      desc.length && spanName !== desc
+        ? `;desc=${encodeDescription(desc)}`
+        : "";
 
     this.#started.delete(spanName);
     this.#stopped.push(`${spanName}${duration}${description}`);
@@ -64,7 +73,9 @@ export class ServerTimings {
 
   addTimelessMetric(spanName: string, desc?: string): void {
     const description =
-      desc && desc.length && spanName !== desc ? `;desc="${desc}"` : "";
+      desc && desc.length && spanName !== desc
+        ? `;desc=${encodeDescription(desc)}`
+        : "";
     this.#stopped.push(`${spanName}${description}`);
   }
 
