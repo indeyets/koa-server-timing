@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/tinovyatkin/koa-server-timing
+ * Parts of this file are inspired by https://github.com/tinovyatkin/koa-server-timing
  * created by Konstantin Vyatkin and Charles Vazac
  */
 
