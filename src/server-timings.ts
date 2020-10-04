@@ -44,7 +44,7 @@ export class ServerTimings {
       !this.#started.has(spanName),
       "This span is running already, name must be unique!"
     );
-    assert.ok(spanName.length, "Either slug or description must be non-empty");
+    assert.ok(spanName.length, "Span's name must be non-empty");
 
     this.#started.set(spanName, {
       start: process.hrtime(),
