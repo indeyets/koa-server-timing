@@ -11,7 +11,7 @@ export default [
         format: "commonjs",
       },
       {
-        file: "dist/index.esm.js",
+        file: "dist/index.mjs",
         format: "es",
       },
     ],

@@ -1,6 +1,6 @@
-const expect = require("unexpected");
+import expect from 'unexpected';
 
-const { ServerTimings } = require("../dist/index");
+import { ServerTimings } from '../dist/index.mjs';
 
 describe("server-timings", () => {
   it("should return empty list by default", () => {
