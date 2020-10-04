@@ -5,10 +5,16 @@ export default [
   {
     input: "src/index.ts",
     external: ["assert"],
-    output: {
-      file: "dist/index.js",
-      format: "commonjs",
-    },
+    output: [
+      {
+        file: "dist/index.js",
+        format: "commonjs",
+      },
+      {
+        file: "dist/index.esm.js",
+        format: "es",
+      },
+    ],
     plugins: [
       esbuild({
         // All options are optional
